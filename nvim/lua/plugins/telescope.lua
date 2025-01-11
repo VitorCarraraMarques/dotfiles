@@ -17,8 +17,7 @@ return {
 
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<C-p>", function ()
-                local opts = require("telescope.themes").get_ivy()
-                builtin.find_files(opts)
+                builtin.find_files()
             end, {})
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
         end,
