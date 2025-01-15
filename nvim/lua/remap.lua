@@ -47,7 +47,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- ERRORHANDLING BOILERPLATE IN GOLANG
 vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
--- BACKSPACE EQUALS GO BACK TO ALTERNATE FILE 
+-- BACKSPACE EQUALS GO BACK TO ALTERNATE FILE
 vim.keymap.set("n", "<BS>", "<C-^>")
 
 -- NAVIGATE DIAGNOSTIC
@@ -55,10 +55,9 @@ vim.keymap.set("n", "<leader>sd", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>nd", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>pd", vim.diagnostic.goto_prev)
 
-
 -- SOURCE CURRENT FILE
 vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
+    vim.cmd("so")
 end)
 
 -- ALIGN ON EQUAL
@@ -73,6 +72,6 @@ vim.keymap.set("n", "<leader>st", function()
     vim.cmd.vnew()
     vim.cmd.term()
     vim.cmd.wincmd("L")
-    --vim.api.nvim_win_set_height(0, 10)
+    vim.api.nvim_win_set_width(0, 62)
 end)
 vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
