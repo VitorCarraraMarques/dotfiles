@@ -68,10 +68,30 @@ vim.keymap.set({ "n", "v" }, "<leader>jj", "Vyp")
 vim.keymap.set({ "n", "v" }, "<leader>kk", "VyP")
 
 -- OPEN TERMINAL WINDOW
+vim.keymap.set("n", "<leader>tr", ":term<CR>i")
 vim.keymap.set("n", "<leader>st", function()
     vim.cmd.vnew()
     vim.cmd.term()
     vim.cmd.wincmd("L")
-    vim.api.nvim_win_set_width(0, 62)
+    vim.api.nvim_win_set_width(0, 100)
 end)
 vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
+
+
+vim.api.nvim_set_keymap('t', '<C-l><C-l>', [[<C-\><C-N>:lua ClearTerm(0)<CR>]], {})
+vim.api.nvim_set_keymap('t', '<C-l><C-l><C-l>', [[<C-\><C-N>:lua ClearTerm(1)<CR>]], {})
+
+
+function ClearTerm(reset)
+  vim.opt_local.scrollback = 1
+
+  vim.api.nvim_command("startinsert")
+  if reset == 1 then
+    vim.api.nvim_feedkeys("reset", 't', false)
+  else
+    vim.api.nvim_feedkeys("clear", 't', false)
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<cr>', true, false, true), 't', true)
+
+  vim.opt_local.scrollback = 10000
+end

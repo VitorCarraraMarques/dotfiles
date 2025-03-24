@@ -16,25 +16,11 @@ return {
             telescope.load_extension("fzf")
 
             local builtin = require("telescope.builtin")
-            vim.keymap.set("n", "<C-p>", function ()
-                builtin.find_files()
-            end, {})
+            vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+            vim.keymap.set("n", "<C-b>", builtin.buffers, {})
+            vim.keymap.set("n", "<C-h>", builtin.command_history, {})
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-        end,
-    },
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-        vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>"),
-        config = function()
-            require("telescope").setup({
-                extensions = {
-                    file_browser = {
-                        theme = "ivy",
-                    },
-                },
-            })
-            require("telescope").load_extension("file_browser")
+            vim.keymap.set("n", "<leader>mp", builtin.man_pages, {})
         end,
     },
     {

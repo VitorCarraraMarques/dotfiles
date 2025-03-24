@@ -1,4 +1,4 @@
-local enabled = true;
+local enabled = true
 
 if not enabled then
 	return {}
@@ -37,6 +37,9 @@ else
 						["<C-e>"] = cmp.mapping.abort(),
 						["<C-i>"] = cmp.mapping.confirm({ select = true }),
 					}),
+					formatting = {
+						format = require("nvim-highlight-colors").format,
+					},
 					sources = cmp.config.sources({
 						{ name = "nvim_lsp" },
 						{ name = "luasnip" },
