@@ -2,6 +2,9 @@ export EDITOR="snap run nvim"
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/.local/bin/"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 ZSH_THEME="robbyrussell"
 
 plugins=(
