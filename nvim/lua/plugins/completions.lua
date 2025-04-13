@@ -18,6 +18,7 @@ else
 			"hrsh7th/nvim-cmp",
 			config = function()
 				local cmp = require("cmp")
+				local luasnip = require("luasnip")
 				require("luasnip.loaders.from_vscode").lazy_load()
 
 				cmp.setup({
@@ -35,7 +36,37 @@ else
 						["<C-f>"] = cmp.mapping.scroll_docs(4),
 						["<C-Space>"] = cmp.mapping.complete(),
 						["<C-e>"] = cmp.mapping.abort(),
-						["<C-i>"] = cmp.mapping.confirm({ select = true }),
+						["<Tab>"] = cmp.mapping(function(fallback)
+							if cmp.visible() then
+								if luasnip.expandable() then
+									luasnip.expand()
+								else
+									cmp.confirm({
+										select = true,
+									})
+								end
+							else
+								fallback()
+							end
+						end),
+						["<C-n>"] = cmp.mapping(function(fallback)
+							if cmp.visible() then
+								cmp.select_next_item()
+							elseif luasnip.locally_jumpable(1) then
+								luasnip.jump(1)
+							else
+								fallback()
+							end
+						end, { "i", "s" }),
+						["<C-p>"] = cmp.mapping(function(fallback)
+							if cmp.visible() then
+								cmp.select_prev_item()
+							elseif luasnip.locally_jumpable(-1) then
+								luasnip.jump(-1)
+							else
+								fallback()
+							end
+						end, { "i", "s" }),
 					}),
 					formatting = {
 						format = require("nvim-highlight-colors").format,
@@ -43,11 +74,6 @@ else
 					sources = cmp.config.sources({
 						{ name = "nvim_lsp" },
 						{ name = "luasnip" },
-						{ name = "pyright" },
-						{ name = "html" },
-						{ name = "gopls" },
-						{ name = "tmpl" },
-						{ name = "emmet-ls" },
 					}, {
 						{ name = "buffer" },
 					}),

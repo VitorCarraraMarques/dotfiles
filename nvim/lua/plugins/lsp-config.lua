@@ -26,6 +26,7 @@ else
                         "ts_ls",
                         "clangd",
                         "htmx",
+                        "denols",
                     },
                 })
             end,
@@ -67,10 +68,16 @@ else
                 lspconfig.ts_ls.setup({
                     capabilities = capabilities,
                 })
+                lspconfig.denols.setup({
+                    capabilities = capabilities,
+                })
                 lspconfig.clangd.setup({
                     capabilities = capabilities,
                 })
                 lspconfig.htmx.setup({
+                    capabilities = capabilities,
+                })
+                lspconfig.jdtls.setup({
                     capabilities = capabilities,
                 })
 
