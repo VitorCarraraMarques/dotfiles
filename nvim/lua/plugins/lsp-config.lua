@@ -81,9 +81,6 @@ else
 				lspconfig.jdtls.setup({
 					capabilities = capabilities,
 				})
-				lspconfig.harper_ls.setup({
-					capabilities = capabilities,
-				})
 
 				vim.diagnostic.config({ underline = false })
 				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
