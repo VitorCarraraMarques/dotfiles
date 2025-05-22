@@ -46,6 +46,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- ERRORHANDLING BOILERPLATE IN GOLANG
 vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
+-- COMPILE TEMPL FILE
+vim.keymap.set("n", "<leader>tt", "<cmd>!templ generate<CR>", { silent = true })
 
 -- BACKSPACE EQUALS GO BACK TO ALTERNATE FILE
 vim.keymap.set("n", "<BS>", "<C-^>")
