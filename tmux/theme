@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+theme() {
+  local white='#abb2bf'
+  local black='#282c34'
+
+  local accent='#98c379'
+  local accent_dark='#00af87'
+
+  local menu_color='#3e4452'
+
+  local background='#5c6370'
+  local background_dark='#3b4048'
+
+  tmux set-option -g mode-style 'bg=#3e4452'
+
+  tmux set-option -g status-justify centre
+  tmux set-option -g status-style "bg=${background}"
+  tmux set-option -g status-left ' #S '
+  tmux set-option -g status-left-style "bg=${accent},fg=${black}"
+
+  tmux set-option -g status-right "%m/%d %R "
+  tmux set-option -g status-right-style "bg=${menu_color},fg=${white}"
+
+  tmux set-window-option -g window-status-format ' #I:#W '
+  tmux set-window-option -g window-status-style "bg=${menu_color}"
+  tmux set-window-option -g window-status-current-format ' #I:#W '
+  tmux set-window-option -g window-status-current-style "bg=${accent},fg=${black}"
+  tmux set-window-option -g window-status-separator ''
+}
+
+theme
+
