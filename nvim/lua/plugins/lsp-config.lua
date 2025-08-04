@@ -64,6 +64,7 @@ else
 					capabilities = capabilities,
 				})
 				lspconfig.tailwindcss.setup({
+                    include_languages = { html =  "templ" },
 					capabilities = capabilities,
 				})
 				lspconfig.ts_ls.setup({
